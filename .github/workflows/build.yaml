@@ -1,0 +1,18 @@
+name: build-test-publish
+
+on: [push, workflow_dispatch]
+
+permissions:
+  checks: write
+  contents: read
+
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: a11ytester
+      uses: mikaelvesavuori/a11ytester-action@v1.0.0
+      with:
+        urls: '[\"www.google.com\"]'
